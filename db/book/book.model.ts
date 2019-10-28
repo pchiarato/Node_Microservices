@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-
+// Mongo Schema and Interface
 export interface IBook extends Document {
     title: string;
     author: string;
@@ -14,4 +14,4 @@ const bookSchema: Schema = new Schema({
     publisher: { type: String, required: false },
 });
 
-export default mongoose.model<IBook>('Book', bookSchema);
+export default mongoose.model<IBook>('books', bookSchema);

@@ -6,6 +6,7 @@
   "scripts": {
     "start-dev": "nodemon --config \"./nodemon.json\"",
     "start-book-service": "nodemon --exec ts-node \"./src/services/book.service.ts\"",
+    "start-customer-service": "nodemon --exec ts-node \"./src/services/customer.service.ts\"",
     "build": "rm -rf ./build/ && tsc",
     "start": "node build/start.js"
   },

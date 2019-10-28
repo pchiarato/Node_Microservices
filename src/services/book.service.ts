@@ -1,10 +1,10 @@
-import express from 'express';
+import express, { Application } from 'express';
 import * as bodyParser from 'body-parser';
 import bookController from './../controllers/book.controller';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const bookService = express();
+const bookService: Application = express();
 bookService.use(bodyParser.json());
 const port = process.env.BOOK_SERVICE_PORT || 3001;
 
