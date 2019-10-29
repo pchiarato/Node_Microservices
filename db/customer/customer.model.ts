@@ -17,7 +17,7 @@ const customerSchema: Schema = new Schema({
     lastName: {type: String, required: true, minlength: 2},
     email: {type: String, required: true, unique: true,
         validate: emailValidation},
-    dateCreated: {type: Date, required: true, default: new Date().toLocaleString()},
+    dateCreated: {type: Date, required: true, default: new Date().toLocaleDateString()},
 });
 
 

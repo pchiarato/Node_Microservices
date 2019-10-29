@@ -59,3 +59,45 @@ export const getCustomerById = async (id: string): Promise<ICustomer | null> => 
         return Promise.reject(new Error('Connection failed'));
     }
 };
+
+// delete customer method
+export const deleteCustomerById = async (id: string) => {
+    const connection = await dbConnection(connectionString, 'CUSTOMER DATABASE');
+    const queryId = Types.ObjectId(id);
+    if (connection) {
+        try {
+            const response = await customerSchema.findByIdAndDelete(queryId);
+            if (response) {
+                return Promise.resolve(response);
+            } else {
+                return Promise.resolve(null);
+            }
+        } catch (e) {
+            return Promise.reject(null);
+        }
+    } else {
+        return Promise.reject(new Error('Connection failed'));
+    }
+};
+
+// update customer by id method
+
+export const updateCustomer = async (id: string, customer: ICustomer) => {
+    const connection = await dbConnection(connectionString, 'CUSTOMER DATABASE');
+    const queryId = Types.ObjectId(id);
+    if (connection) {
+        try {
+            const updatedCustomer = await customerSchema.findOneAndUpdate({_id: queryId}, customer);
+            if (updatedCustomer) {
+                return Promise.resolve(updatedCustomer);
+            } else {
+                return Promise.resolve(null);
+            }
+        } catch (e) {
+            return Promise.reject(null);
+        }
+    } else {
+        return Promise.reject(new Error('Connection failed.'));
+    }
+};
+

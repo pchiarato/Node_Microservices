@@ -7,10 +7,12 @@
     "start-dev": "nodemon --config \"./nodemon.json\"",
     "start-book-service": "nodemon --exec ts-node \"./src/services/book.service.ts\"",
     "start-customer-service": "nodemon --exec ts-node \"./src/services/customer.service.ts\"",
+    "start-order-service": "nodemon --exec ts-node \"./src/services/order.service.ts\"",
     "build": "rm -rf ./build/ && tsc",
     "start": "node build/start.js"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.17.1",
     "@types/mongoose": "^5.5.23",
@@ -20,6 +22,7 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

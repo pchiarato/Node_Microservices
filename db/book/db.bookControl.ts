@@ -18,6 +18,26 @@ export const getBooks = async () => {
         return Promise.reject(new Error('No Connection'));
     }
 };
+
+// get book by id method
+export const getBookById = async (id: string) => {
+    const connection = await dbConnection(connectionString, 'BOOK DATABASE');
+    if (connection) {
+        try {
+            const book: IBook | null = await bookSchema.findOne({_id: id});
+            if (book) {
+                return Promise.resolve(book);
+            } else {
+                return Promise.resolve(null);
+            }
+        } catch (e) {
+            return Promise.reject(null);
+        }
+    } else {
+        return Promise.reject(new Error('Connection failed'));
+    }
+}
+
 export const createBook = async (book: IBook): Promise<IBook | null> => {
     const connection: boolean = await dbConnection(connectionString, 'BOOK DATABASE');
     if (connection) {
